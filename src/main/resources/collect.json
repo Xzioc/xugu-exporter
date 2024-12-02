@@ -1,0 +1,27 @@
+{
+  "queries": [{
+      "name": "SYSTEM LONG_TRANS",
+      "remark": "长事务数量",
+      "interval": 60,
+      "enabled": true,
+      "prefix": "STATS",
+      "sql": "SELECT COUNT(*) AS LONG_TRANS_NUM  FROM SYS_ALL_SESSIONS WHERE SYSDATE-TRANS_START_T>10 "
+    },
+    {
+      "name": "SYSTEM SESSIONS",
+      "remark": "当前连接数",
+      "interval": 20,
+      "prefix": "STATS",
+      "enabled": true,
+      "sql": "SELECT COUNT(*) as SESSION_NUM FROM DBA_SESSIONS"
+    },
+    {
+      "name": "SYSTEM THREAD",
+      "remark": "当前非空闲线程数",
+      "interval": 20,
+      "prefix": "STATS",
+      "enabled": true,
+      "sql": "SELECT COUNT(*) as ACTIVE_THREAD_NUM FROM SYS_ALL_THD_STATUS WHERE STATE!=0 "
+    }
+  ]
+}
